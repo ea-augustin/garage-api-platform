@@ -30,6 +30,11 @@ class Model
      */
     private $brand;
 
+    /**
+     * @ORM\OneToOne(targetEntity=images::class, cascade={"persist", "remove"})
+     */
+    private $logo;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -55,6 +60,18 @@ class Model
     public function setBrand(?Brand $brand): self
     {
         $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function getLogo(): ?images
+    {
+        return $this->logo;
+    }
+
+    public function setLogo(?images $logo): self
+    {
+        $this->logo = $logo;
 
         return $this;
     }
