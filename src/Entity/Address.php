@@ -37,7 +37,7 @@ class Address
     private $garages;
 
     /**
-     * @ORM\ManyToOne(targetEntity=city::class, inversedBy="addresses")
+     * @ORM\ManyToOne(targetEntity=City::class, inversedBy="addresses")
      */
     private $city;
 

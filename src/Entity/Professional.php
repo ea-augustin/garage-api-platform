@@ -24,127 +24,127 @@ class Professional implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $username_pro;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=180)
      */
-    private $firstname_pro;
+    private $firstname;
 
     /**
      * @ORM\Column(type="string", length=180)
      */
-    private $lastname_pro;
+    private $lastname;
 
     /**
      * @ORM\Column(type="string", length=180)
      */
-    private $email_pro;
+    private $email;
 
     /**
      * @ORM\Column(type="string", length=180)
      */
-    private $telephone_pro;
+    private $telephone;
 
     /**
      * @ORM\Column(type="string", length=180)
      */
-    private $siren_pro;
+    private $siren;
 
     /**
      * @return mixed
      */
-    public function getUsernamePro()
+    public function getUsername()
     {
-        return $this->username_pro;
+        return $this->username;
     }
 
     /**
-     * @param mixed $username_pro
+     * @param mixed $username
      */
-    public function setUsernamePro($username_pro): void
+    public function setUsername($username): void
     {
-        $this->username_pro = $username_pro;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getFirstnamePro()
-    {
-        return $this->firstname_pro;
-    }
-
-    /**
-     * @param mixed $firstname_pro
-     */
-    public function setFirstnamePro($firstname_pro): void
-    {
-        $this->firstname_pro = $firstname_pro;
+        $this->username= $username;
     }
 
     /**
      * @return mixed
      */
-    public function getLastnamePro()
+    public function getFirstname()
     {
-        return $this->lastname_pro;
+        return $this->firstname;
     }
 
     /**
-     * @param mixed $lastname_pro
+     * @param mixed $firstname
      */
-    public function setLastnamePro($lastname_pro): void
+    public function setFirstname($firstname): void
     {
-        $this->lastname_pro = $lastname_pro;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getEmailPro()
-    {
-        return $this->email_pro;
-    }
-
-    /**
-     * @param mixed $email_pro
-     */
-    public function setEmailPro($email_pro): void
-    {
-        $this->email_pro = $email_pro;
+        $this->firstname = $firstname;
     }
 
     /**
      * @return mixed
      */
-    public function getTelephonePro()
+    public function getLastname()
     {
-        return $this->telephone_pro;
+        return $this->lastname;
     }
 
     /**
-     * @param mixed $telephone_pro
+     * @param mixed $lastname
      */
-    public function setTelephonePro($telephone_pro): void
+    public function setLastname($lastname): void
     {
-        $this->telephone_pro = $telephone_pro;
+        $this->lastname = $lastname;
     }
 
     /**
      * @return mixed
      */
-    public function getSirenPro()
+    public function getEmail()
     {
-        return $this->siren_pro;
+        return $this->email;
     }
 
     /**
-     * @param mixed $siren_pro
+     * @param mixed $email
      */
-    public function setSirenPro($siren_pro): void
+    public function setEmail($email): void
     {
-        $this->siren_pro = $siren_pro;
+        $this->email = $email;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * @param mixed $telephone
+     */
+    public function setTelephone($telephone): void
+    {
+        $this->telephone = $telephone;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSiren()
+    {
+        return $this->siren;
+    }
+
+    /**
+     * @param mixed $siren
+     */
+    public function setSiren($siren): void
+    {
+        $this->siren = $siren;
     }
 
     /**
@@ -164,7 +164,7 @@ class Professional implements UserInterface, PasswordAuthenticatedUserInterface
     private $garage;
 
     /**
-     * @ORM\OneToOne(targetEntity=images::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Images::class, cascade={"persist", "remove"})
      */
     private $image;
 
@@ -176,21 +176,6 @@ class Professional implements UserInterface, PasswordAuthenticatedUserInterface
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    /**
-     * @deprecated since Symfony 5.3, use getUserIdentifier instead
-     */
-    public function getUsername(): string
-    {
-        return (string) $this->username;
-    }
-
-    public function setUsername(string $username): self
-    {
-        $this->username = $username;
-
-        return $this;
     }
 
     /**

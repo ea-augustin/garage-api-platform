@@ -31,7 +31,7 @@ class Model
     private $brand;
 
     /**
-     * @ORM\OneToOne(targetEntity=images::class, cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Images::class, cascade={"persist", "remove"})
      */
     private $logo;
 

@@ -65,7 +65,7 @@ class Advertisement
     private $garage;
 
     /**
-     * @ORM\OneToMany(targetEntity=images::class, mappedBy="advertisement")
+     * @ORM\OneToMany(targetEntity=Images::class, mappedBy="advertisement")
      */
     private $image;
 
