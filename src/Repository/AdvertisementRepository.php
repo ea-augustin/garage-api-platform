@@ -21,7 +21,41 @@ class AdvertisementRepository extends ServiceEntityRepository
 
     public function search($filters)
     {
-        $query = $this->createQueryBuilder('ad');
+        $query = $this->createQueryBuilder('a')
+            ->join("a.fueltype", 'fueltype')
+            ->join("a.brand", 'brand')
+            ->join('brand.model', 'model');
+
+
+        if (!is_null($filters['brand'])) {
+            $query->andWhere('model.id = :id')->setParameter('id', $filters['brand']);
+        }
+
+        if (!is_null($filters['fueltype'])) {
+            $query->andWhere('fueltype.id = :fueltype')->setParameter('fueltype', $filters['fueltype']);
+        }
+        if (!is_null($filters['model'])) {
+            $query->andWhere('model.id = :modelId')->setParameter('modelId', $filters['model']);
+        }
+        if (!is_null($filters['maxKm'])) {
+            $query->andWhere('a.mileage_adv <= :maxKm')->setParameter('maxKm', $filters['maxKm']);
+        }
+        if (!is_null($filters['minKm'])) {
+            $query->andWhere('a.mileage_adv >= :minKm')->setParameter('minKm', $filters['minKm']);
+        }
+        if (!is_null($filters['maxYear'])) {
+            $query->andWhere('a.year <= :maxYear')->setParameter('maxYear', $filters['maxYear']);
+        }
+        if (!is_null($filters['minYear'])) {
+            $query->andWhere('a.year >= :minYear')->setParameter('minYear', $filters['minYear']);
+        }
+        if (!is_null($filters['maxPrice'])) {
+            $query->andWhere('a.price_adv <= :maxPrice')->setParameter('maxPrice', $filters['maxPrice']);
+        }
+        if (!is_null($filters['minPrice'])) {
+            $query->andWhere('a.price_adv >= :minPrice')->setParameter('minPrice', $filters['minPrice']);
+        }
+
         return $query->getQuery()->getResult();
     }
 
