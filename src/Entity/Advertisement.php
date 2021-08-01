@@ -7,32 +7,40 @@ use App\Repository\AdvertisementRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AdvertisementRepository::class)
  */
-#[ApiResource]
+#[ApiResource (normalizationContext: ['groups' =>['car']])]
 class Advertisement
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ({"car"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotNull(message=" A title must be given")
+     *  @Groups ({"car"})
      */
     private $title_adv;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups ({"car"})
      */
     private $price_adv;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotNull(message=" A description must be given")
+     *  @Groups ({"car"})
      */
     private $description_adv;
 
@@ -43,6 +51,8 @@ class Advertisement
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotNull(message=" A mileage must be given")
+     * @Groups ({"car"})
      */
     private $mileage_adv;
 
@@ -66,8 +76,14 @@ class Advertisement
 
     /**
      * @ORM\OneToMany(targetEntity=Images::class, mappedBy="advertisement")
+     * @Groups ({"car"})
      */
     private $image;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $year;
 
     public function __construct()
     {
@@ -201,6 +217,18 @@ class Advertisement
                 $image->setAdvertisement(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getYear(): ?int
+    {
+        return $this->year;
+    }
+
+    public function setYear(int $year): self
+    {
+        $this->year = $year;
 
         return $this;
     }

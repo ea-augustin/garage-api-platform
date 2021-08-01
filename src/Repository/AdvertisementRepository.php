@@ -19,6 +19,13 @@ class AdvertisementRepository extends ServiceEntityRepository
         parent::__construct($registry, Advertisement::class);
     }
 
+    public function search($filters)
+    {
+        $query = $this->createQueryBuilder('ad');
+        return $query->getQuery()->getResult();
+    }
+
+
     // /**
     //  * @return Advertisement[] Returns an array of Advertisement objects
     //  */

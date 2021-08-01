@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20210723120519 extends AbstractMigration
+final class Version20210801165619 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -21,7 +21,7 @@ final class Version20210723120519 extends AbstractMigration
     {
         // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE address (id INT AUTO_INCREMENT NOT NULL, city_id INT DEFAULT NULL, street_num_add VARCHAR(255) NOT NULL, postal_code_add VARCHAR(255) NOT NULL, INDEX IDX_D4E6F818BAC62AF (city_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE advertisement (id INT AUTO_INCREMENT NOT NULL, brand_id INT NOT NULL, fueltype_id INT NOT NULL, garage_id INT NOT NULL, title_adv VARCHAR(255) NOT NULL, price_adv DOUBLE PRECISION NOT NULL, description_adv LONGTEXT NOT NULL, date_adv DATE NOT NULL, mileage_adv INT NOT NULL, INDEX IDX_C95F6AEE44F5D008 (brand_id), INDEX IDX_C95F6AEEA1681B9 (fueltype_id), INDEX IDX_C95F6AEEC4FFF555 (garage_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE advertisement (id INT AUTO_INCREMENT NOT NULL, brand_id INT NOT NULL, fueltype_id INT NOT NULL, garage_id INT NOT NULL, title_adv VARCHAR(255) NOT NULL, price_adv DOUBLE PRECISION NOT NULL, description_adv LONGTEXT NOT NULL, date_adv DATE NOT NULL, mileage_adv INT NOT NULL, year INT NOT NULL, INDEX IDX_C95F6AEE44F5D008 (brand_id), INDEX IDX_C95F6AEEA1681B9 (fueltype_id), INDEX IDX_C95F6AEEC4FFF555 (garage_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE brand (id INT AUTO_INCREMENT NOT NULL, name_brd VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE city (id INT AUTO_INCREMENT NOT NULL, name_cit VARCHAR(255) NOT NULL, region_cit VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE fueltype (id INT AUTO_INCREMENT NOT NULL, type_ful VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');

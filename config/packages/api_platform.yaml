@@ -5,3 +5,7 @@ api_platform:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
+#        allow plain identifier id
+    allow_plain_identifiers: true
+    defaults:
+        pagination_items_per_page: 15
